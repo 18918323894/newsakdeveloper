@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".SheetActivity">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/sheep_top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/Table1_Name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="140dp"
+            android:text="取料灯"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="@+id/table1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/WorkSpace_TextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="30dp"
+            android:text="工作台:"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/Effective_Button"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="20dp"
+            android:background="@color/gray"
+            android:text="有效"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/ButtonWorkspace"
+            app:layout_constraintStart_toEndOf="@+id/ButtonWorkspace"
+            app:layout_constraintTop_toTopOf="@+id/ButtonWorkspace" />
+
+        <TextView
+            android:id="@+id/Scanning_TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="扫描枪扫描结果："
+            app:layout_constraintBottom_toBottomOf="@+id/sheet_saomiao"
+            app:layout_constraintEnd_toStartOf="@+id/sheet_saomiao"
+            app:layout_constraintTop_toTopOf="@+id/sheet_saomiao" />
+
+
+        <TextView
+            android:id="@+id/sheet_saomiao"
+            android:layout_width="500dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="27dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/edit_bg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.bin.david.form.core.SmartTable
+            android:id="@+id/table1"
+            android:layout_width="320dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="221dp"
+            android:layout_marginBottom="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.bin.david.form.core.SmartTable
+            android:id="@+id/table2"
+            android:layout_width="320dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/table1"
+            app:layout_constraintTop_toTopOf="@+id/table1" />
+
+        <com.bin.david.form.core.SmartTable
+            android:id="@+id/table4"
+            android:layout_width="320dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/table2" />
+
+        <com.bin.david.form.core.SmartTable
+            android:id="@+id/table3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/table4"
+            app:layout_constraintStart_toEndOf="@+id/table2"
+            app:layout_constraintTop_toTopOf="@+id/table1" />
+
+        <TextView
+            android:id="@+id/Table2_Name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="补料灯"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="@+id/table2"
+            app:layout_constraintTop_toTopOf="@+id/Table1_Name" />
+
+        <TextView
+            android:id="@+id/Table3_Name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="工具"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="@+id/table3"
+            app:layout_constraintTop_toTopOf="@+id/Table2_Name" />
+
+        <TextView
+            android:id="@+id/Table4_Name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="设备"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="@+id/table4"
+            app:layout_constraintTop_toTopOf="@+id/Table3_Name" />
+
+        <Button
+            android:id="@+id/Table1_On_Button"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/edit_bg"
+            android:text="全部输出"
+            app:layout_constraintStart_toStartOf="@+id/Table1_Name"
+            app:layout_constraintTop_toBottomOf="@+id/Table1_Name" />
+
+        <Button
+            android:id="@+id/Table1_Off_Button"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/edit_bg"
+            android:text="全部断开"
+            app:layout_constraintStart_toEndOf="@+id/Table1_On_Button"
+            app:layout_constraintTop_toTopOf="@+id/Table1_On_Button" />
+
+        <Button
+            android:id="@+id/Table2_Off_Button"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/edit_bg"
+            android:text="全部断开"
+            app:layout_constraintStart_toEndOf="@+id/Table2_On_Button"
+            app:layout_constraintTop_toTopOf="@+id/Table2_On_Button" />
+
+        <Button
+            android:id="@+id/Table2_On_Button"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/edit_bg"
+            android:text="全部输出"
+            app:layout_constraintStart_toStartOf="@+id/Table2_Name"
+            app:layout_constraintTop_toBottomOf="@+id/Table2_Name" />
+
+        <Button
+            android:id="@+id/ButtonWorkspace"
+            android:layout_width="200dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="27dp"
+            android:background="@color/gray"
+            android:drawableRight="@drawable/small_xia"
+            android:gravity="left|center_vertical|center"
+            android:paddingLeft="20dp"
+            android:text="南岛四方智能作业台"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@+id/WorkSpace_TextView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ListView
+            android:id="@+id/TvWorkspace"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:background="@color/btn_unsel_color"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@+id/ButtonWorkspace"
+            app:layout_constraintStart_toStartOf="@+id/ButtonWorkspace"
+            app:layout_constraintTop_toBottomOf="@+id/ButtonWorkspace" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.constraint.ConstraintLayout>
