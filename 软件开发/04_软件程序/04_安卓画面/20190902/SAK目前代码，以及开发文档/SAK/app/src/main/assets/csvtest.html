@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <meta name="author" content="oscar999">
+        <title>导出CSV文件</title>
+        <script>
+        function exportCsv(obj){
+            //title ["","",""]
+            var title = obj.title;
+            //titleForKey ["","",""]
+            var titleForKey = obj.titleForKey;
+            var data = obj.data;
+            var str = [];
+            str.push(obj.title.join(",")+"\n");
+            for(var i=0;i<data.length;i++){
+                var temp = [];
+                for(var j=0;j<titleForKey.length;j++){
+                    temp.push(data[i][titleForKey[j]]);
+             }
+             str.push(temp.join(",")+"\n");
+         }
+         var uri = 'data:text/csv;charset=utf-8,' + encodeURIComponent(str.join(""));  
+         var downloadLink = document.createElement("a");
+         downloadLink.href = uri;
+         downloadLink.download = "export.csv"; 
+         document.body.appendChild(downloadLink);
+         downloadLink.click();
+         document.body.removeChild(downloadLink); 
+      }
+      window.onload = function(){
+          document.getElementById("test").onclick = function(){
+              exportCsv({
+                  title:["第一列","第二列"],
+                  titleForKey:["num1","num2"],
+                  data:[
+                     {
+                      num1:"123",
+                      num2:"fff"
+                     },{
+                      num1:"123",
+                      num2:"fff"
+                     },{
+                      num1:"123",
+                      num2:"fff"
+                     }]    
+              });
+         }
+      }
+      </script> 
+      </head>
+<body>
+  <a id="test" href="javascript:;">导出</a>
+</body>
+</html>

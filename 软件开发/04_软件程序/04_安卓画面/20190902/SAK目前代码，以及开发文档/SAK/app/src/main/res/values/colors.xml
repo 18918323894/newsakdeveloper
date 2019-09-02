@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#d81b60</color>
+    <color name="material_lightblue_500">#ff03a9f4</color>
+    <color name="material_lightblue_700">#ff0288d1</color>
+    <color name="material_teal_500">#ff009688</color>
+    <color name="material_yellow_500">#ffffeb3b</color>
+    <color name="material_pink_500">#ffe91e63</color>
+    <color name="green">#32CD32</color>
+    <color name="red">#FF0000</color>
+    <color name="yellow">#FFD700</color>
+    <color name="gray">#D6D6D7</color>
+    <color name="light_gray">#FAFAFA</color>
+    <color name="purple">#2A3F5F</color>
+    <color name="alpha_background">#50000000</color>
+    <color name="child">#446ead</color>
+    <color name="third">#52daba</color>
+
+
+
+
+</resources>

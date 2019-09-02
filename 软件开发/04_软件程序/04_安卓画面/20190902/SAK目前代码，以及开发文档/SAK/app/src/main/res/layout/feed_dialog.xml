@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/feed_main_layout"
+    android:layout_width="750dp"
+    android:layout_height="600dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView101"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_weight="1"
+            android:text="补料" />
+    </LinearLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal"
+        android:paddingTop="5dp"
+        android:textAlignment="center">
+
+        <Button
+            android:id="@+id/edit_button"
+            android:layout_width="60dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/gray"
+            android:text="编辑"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/feed_button"
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="3dp"
+            android:text="补料"
+            app:layout_constraintStart_toEndOf="@+id/edit_button"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/editText_editStock"
+            android:layout_width="150dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="2dp"
+            android:ems="10"
+            android:hint="请输入"
+            android:inputType="textPersonName"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@+id/feed_button"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn1"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="2dp"
+            android:layout_weight="1"
+            android:text="确认"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@+id/editText_editStock"
+            app:layout_constraintTop_toTopOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+
+    <com.bin.david.form.core.SmartTable
+        android:id="@+id/feed_table"
+        android:layout_width="match_parent"
+        android:layout_height="420dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintStart_toEndOf="@+id/table4"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/determine_button"
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="350dp"
+            android:text="确定" />
+
+        <Button
+            android:id="@+id/cancel_button"
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:text="取消" />
+    </LinearLayout>
+
+</LinearLayout>

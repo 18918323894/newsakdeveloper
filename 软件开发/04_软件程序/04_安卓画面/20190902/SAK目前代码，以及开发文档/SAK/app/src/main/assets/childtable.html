@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap-table.min.css" />
+		<link rel="stylesheet" href="css/ChildTable.css">
+		<script src="js/jquery-3.4.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div class="row">
+		<div id = "leftTable"class="col-md-3" >
+			<table class="table">
+				<thead>
+					<th>  </th>
+					<th>作业步骤</th>
+					<th>步骤名称</th>
+					<th>标准时间（秒）</th>
+				</thead>
+				<tbody>
+					<tr v-for="(item,index) in tabledata">
+						<td>{{index}}</td>
+						<td>{{item.step}}</td>
+						<td>{{item.stepname}}</td>
+						<td>{{item.steptime}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-md-5 midForm">
+			<span class="glyphicon glyphicon-plus"></span> <span>作业完成手动判断</span><span class="glyphicon glyphicon-certificate" style="color: red;"></span><br><br>
+			<form action="" method=""style="width: 100%;">
+				<span>视频或图片文件路径</span><br>
+				<input type="text" name="" id="" value="" style="width: 35%; border: solid 1px black;"/>
+				<input type="file" name="" id="" value="" style="display: inline;"/> <br>
+				<span>声音文件路径</span><br>
+				<input type="text" name="" id="" value=""style="width: 35%; border: solid 1px black; />
+				<input type="file" name="" id="" value="" style="display: inline;"/>
+				<div style="height: 200px; width: 100%;"></div>
+				<span>组装信息</span><br>
+				<textarea rows="3" placeholder="请输入组装的详细信息" style="width: 100%; resize: none; border: solid 1px black;"></textarea><br>
+				<span>注意事项</span><br>
+				<textarea rows="3" placeholder = "请输入注意事项的详细信息" style="width: 100%; resize: none;border: solid 1px black;"></textarea><br>
+			</form>
+		</div>
+		<div class="col-md-4 rightFrom" >
+			<div class="right_top_table">
+						<span> &nbsp物料设定</span><br>
+				<table class="table">
+					<thead>
+						<th>物料名称</th>
+						<th>物料型号</th>
+						<th>物料代码</th>
+						<th>数量</th>
+						<th>取料计数</th>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<select class="select">
+									<option value ="test">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+								</select>
+							</td>
+							<td>
+								<select>
+									<option value ="test">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </option>
+								</select>
+							</td>
+							<td>
+								<select>
+									<option value ="test">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </option>
+								</select>
+							</td>
+							<td>
+								   &nbsp
+							</td>
+							<td>
+								<input type="checkbox" checked/>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="right_mid_table">
+				<span>工具规格设定</span><span class="glyphicon glyphicon-certificate" style="color: red;"></span>
+				<table class="table">
+					<thead>
+						<th>工具规格名称</th>
+						<th>工具规格型号</th>
+						<th>工具规格代码</th>
+						<th>计数</th>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<select>
+									<option value ="test"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+								</select>
+							</td>
+							<td>
+								<select>
+									<option value ="test"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+								</select>
+							</td>
+							<td>
+								<select>
+									<option value ="test"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+								</select>
+							</td>
+							<td>
+								1
+							</td>
+						</tr>
+					</tbody>
+				</table><br>
+			</div>
+			<div class="right_bottom_form">
+				<form action="" method="post">
+					<div class="input_align">
+					<span>程序编号:</span>
+					<input class="input " type="text" name="" id="" value="" /><br><br>
+					<span>程序名称:</span> 
+					<input class="input" type="text" name="" id="" value="" /><br><br>
+					<span>旋转矩值(Nm):</span>
+					<input class="input" type="text" name="" id="" value="" /><br><br>
+					</div>
+					<input type="checkbox" name="" id="" value="" />
+					<span>拧紧结果检测</span><br>
+					<div class = "input_margin"><input type="text" class = "right_bottom_form_input" name="" id="" value="" /><span> ≤旋转扭矩≤ </span><input type="text" class = "right_bottom_form_input" name="" id="" value="" /><span>Nm</span><br></div>
+					<div class = "input_margin"><input type="text" class = "right_bottom_form_input" name="" id="" value="" /><span> ≤旋转时间≤ </span><input type="text" class = "right_bottom_form_input" name="" id="" value="" /><span>秒</span><br></div>
+					<div class = "input_margin"><input type="text" class = "right_bottom_form_input" name="" id="" value="" /><span> ≤旋转角度≤ </span><input type="text" class = "right_bottom_form_input" name="" id="" value="" /><span>度</span><br></div>
+					<br>
+					
+				</form>
+			</div>
+		</div>
+		</div>
+	</body>
+</html>
+
+<script type="text/javascript">
+	var leftTable = new Vue({
+		el:'#leftTable',
+		data:{
+			tabledata:[
+				{
+					step:"取料",
+					stepname:"1",
+					steptime:"1"
+				},
+				{
+					step:"取料",
+					stepname:"9",
+					steptime:"1"
+				},
+				{
+					step:"等待",
+					stepname:"2",
+					steptime:"1"
+				},
+				{
+					step:"拧螺丝",
+					stepname:"3",
+					steptime:"1"
+				},
+				{
+					step:"其他",
+					stepname:"6",
+					steptime:"1"
+				},
+				{
+					step:"拧螺丝",
+					stepname:"7",
+					steptime:"1"
+				},
+				{
+					step:"拧螺丝",
+					stepname:"8",
+					steptime:"1"
+				},
+			]
+		},
+		methods:{
+			
+		},
+	})
+</script>

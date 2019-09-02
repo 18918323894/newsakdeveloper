@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-table.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/left.css" />
+    <script src="js/jquery-3.4.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-table.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/bootstrap-table-vue.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/bootstrap-table-locale-all.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/bootstrap-table-zh-CN.min.js" type="text/javascript" charset="utf-8"></script>
+    <title></title>
+</head>
+<body>
+<div id="app">
+    <table id="mytab">
+    </table>
+</div>
+<input type="button" value="比较数据" onclick="check()">
+<input type="button" value="重新选择" onclick="clean()">
+<input type="text" name="" class = "lineshow" id="lineshow1" value="" readonly/>
+<input type="text" name="" class = "lineshow" id="lineshow2" value="" readonly/>
+<div style="height: 250px; width: 100%;" style=" text-align: center;">
+    <textarea name="" class = "lineshow" id="comparetextarea" rows="5" readonly  style="resize: none;width: 100%; text-align: center; margin-top: 20px;"></textarea>
+</div>
+<div id="">
+    <table id="compareTable" class="table">
+
+        <tbody id="compareTableTbody">
+
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
+<script type="text/javascript">
+	var dataobj = [];
+	var Tbody = "<tbody>";
+	var count = 0;
+	var content = "";
+	var alarmMap = new Map();
+	alarmMap.set("1", "1号错误1号错误请注意");
+	alarmMap.set("2", "2号错误2号错误请注意");
+	alarmMap.set("3", "3号错误3号错误请注意");
+	alarmMap.set("4", "4号错误4号错误请注意");
+	alarmMap.set("5", "5号错误5号错误请注意");
+	alarmMap.set("6", "6号错误6号错误请注意");
+	var datat = [{
+			"Itemnumber": "701050000477100",
+			"Itemname": "PCBA",
+			"Itemmodel": "监控屏电源板",
+			"batch": "---",
+			"alarmsnum": "4",
+			"supplynum": "---",
+			"stocknum": "---"
+		}, {
+			"Itemnumber": "701050000477100",
+			"Itemname": "PCBA",
+			"Itemmodel": "监控屏电源板",
+			"batch": "---",
+			"alarmsnum": "3",
+			"supplynum": "---",
+			"stocknum": "---"
+		}, {
+			"Itemnumber": "701050000477100",
+			"Itemname": "PCBA",
+			"Itemmodel": "监控屏电源板",
+			"batch": "---",
+			"alarmsnum": "5",
+			"supplynum": "---",
+			"stocknum": "---"
+		}, {
+			"Itemnumber": "701050000477100",
+			"Itemname": "PCBA",
+			"Itemmodel": "监控屏电源板",
+			"batch": "---",
+			"alarmsnum": "1",
+			"supplynum": "---",
+			"stocknum": "---"
+		}, {
+			"Itemnumber": "701050000477100",
+			"Itemname": "PCBA",
+			"Itemmodel": "监控屏电源板",
+			"batch": "---",
+			"alarmsnum": "1",
+			"supplynum": "---",
+			"stocknum": "---"
+		}, {
+			"Itemnumber": "701050000477100",
+			"Itemname": "PCBA",
+			"Itemmodel": "监控屏电源板",
+			"batch": "---",
+			"alarmsnum": "1",
+			"supplynum": "---",
+			"stocknum": "---"
+		}, {
+			"Itemnumber": "701050000477100",
+			"Itemname": "PCBA",
+			"Itemmodel": "监控屏电源板",
+			"batch": "---",
+			"alarmsnum": "1",
+			"supplynum": "---",
+			"stocknum": "---"
+		}, {
+			"Itemnumber": "701050000477100",
+			"Itemname": "PCBA",
+			"Itemmodel": "监控屏电源板",
+			"batch": "---",
+			"alarmsnum": "1",
+			"supplynum": "---",
+			"stocknum": "---"
+		}, {
+			"Itemnumber": "701050000477100",
+			"Itemname": "PCBA",
+			"Itemmodel": "监控屏电源板",
+			"batch": "---",
+			"alarmsnum": "1",
+			"supplynum": "---",
+			"stocknum": "---"
+		}, {
+			"Itemnumber": "701050000477100",
+			"Itemname": "PCBA",
+			"Itemmodel": "监控屏电源板",
+			"batch": "---",
+			"alarmsnum": "1",
+			"supplynum": "---",
+			"stocknum": "---"
+		}, {
+			"Itemnumber": "701050000477100",
+			"Itemname": "PCBA",
+			"Itemmodel": "监控屏电源板",
+			"batch": "---",
+			"alarmsnum": "1",
+			"supplynum": "---",
+			"stocknum": "---"
+		}, {
+			"Itemnumber": "701050000477100",
+			"Itemname": "PCBA",
+			"Itemmodel": "监控屏电源板",
+			"batch": "---",
+			"alarmsnum": "2",
+			"supplynum": "---",
+			"stocknum": "---"
+		}, {
+			"Itemnumber": "701050000477100",
+			"Itemname": "PCBA",
+			"Itemmodel": "监控屏电源板",
+			"batch": "---",
+			"alarmsnum": "3",
+			"supplynum": "---",
+			"stocknum": "---"
+		}, {
+			"Itemnumber": "701050000477100",
+			"Itemname": "PCBA",
+			"Itemmodel": "电源板有问题！！！",
+			"batch": "---",
+			"alarmsnum": "4",
+			"supplynum": "---",
+			"stocknum": "---"
+		}, {
+			"Itemnumber": "701050000477100",
+			"Itemname": "PCBA",
+			"Itemmodel": "监控屏电源板",
+			"batch": "---",
+			"alarmsnum": "5",
+			"supplynum": "---",
+			"stocknum": "---"
+		}, {
+			"Itemnumber": "701050000477100",
+			"Itemname": "PCBA",
+			"Itemmodel": "监控屏电源板",
+			"batch": "---",
+			"alarmsnum": "1",
+			"supplynum": "---",
+			"stocknum": "---"
+		}, {
+			"Itemnumber": "701050000477100",
+			"Itemname": "PCBA",
+			"Itemmodel": "监控屏电源板",
+			"batch": "---",
+			"alarmsnum": "1",
+			"supplynum": "---",
+			"stocknum": "---"
+		}
+
+	]
+	$('#mytab').bootstrapTable({
+		data: datat,
+		dataType: 'jsonp',
+		crossDomain: true,
+		queryParams: "queryParams",
+		toolbar: "#toolbar",
+		sidePagination: "true",
+		striped: true, // 是否显示行间隔色
+		silent: false, //静态刷新
+		showRefresh: true,
+		//search : "true",
+		uniqueId: "ID",
+		pageSize: "10",
+		pagination: true, // 是否分页
+		pageList: [10, 25, 50, 100],
+		sortable: true, // 是否启用排序
+		columns: [ {
+				field: 'Itemnumber',
+				title: '物料代码',
+				visible: true,
+			},
+			{
+				field: 'Itemname',
+				title: '物料名称'
+			},
+			{
+				field: 'Itemmodel',
+				title: '物料型号'
+			},
+			{
+				field: 'batch',
+				title: '批次'
+			},
+			{
+				field: 'alarmsnum',
+				title: '报警数'
+			},
+			{
+				field: 'supplynum',
+				title: '供给数'
+			},
+			{
+				field: 'stocknum',
+				title: '库存数'
+			},
+			{
+				field: 'price',
+				title: '操作',
+				width: 120,
+				align: 'center',
+				valign: 'middle',
+				formatter: actionFormatter,
+			},
+
+		]
+	});
+	//操作栏的格式化
+	function actionFormatter(value, row, index) {
+		var id = value;
+		var result = "";
+		result += "<a href='javascript:;' class='btn btn-xs green' onclick=\"EditViewById('" + id +
+			"', view='view')\" title='查看'><span class='glyphicon glyphicon-search'></span></a>";
+		result += "<a href='javascript:;' class='btn btn-xs blue' onclick=\"EditViewById('" + id +
+			"')\" title='编辑'><span class='glyphicon glyphicon-pencil'></span></a>";
+		result += "<a href='javascript:;' class='btn btn-xs red' onclick=\"DeleteByIds('" + id +
+			"')\" title='删除'><span class='glyphicon glyphicon-remove'></span></a>";
+		return result;
+	}
+
+	function EditViewById() {
+		var row = $("#mytab").bootstrapTable('getSelections');
+		console.log(row)
+		$('#mytab').bootstrapTable('refresh')
+	}
+
+	$("#mytab").on("click-cell.bs.table", function(field, value, row, $element) {
+
+		if ("alarmsnum" == value) {
+			console.log($element);
+			console.log(value)
+			console.log(alarmMap.get($element.alarmsnum))
+			$("#alarmtext").html(alarmMap.get($element.alarmsnum));
+		}
+
+	});
+
+	function fun(element) {
+		if ($("#" + element.id.toString()).prop('checked') == true) {
+			$('#mytab').bootstrapTable('hideColumn', element.value.toString());
+		} else {
+			$('#mytab').bootstrapTable('showColumn', element.value.toString());
+		}
+	}
+
+
+	$('#mytab').on('click-row.bs.table',function(e, row, $element){
+
+			console.log($element.data('index'))
+			console.log(row)
+			conpare(count++,row,$element)
+		});
+
+	function conpare(index,data,element){
+		console.log(data)
+		if(count<=2){
+			console.log("#lineshow"+count)
+			$("#lineshow"+count).val("选中第"+element.data('index')+"行")
+			dataobj[count-1] = data;
+		// Tbody+="<tr>";
+		// Object.keys(data).forEach(function(key){
+		// 	if(key!=0){
+		// 	Tbody += "<td>"+data[key]+"</td>";
+		 //	 }
+		//});
+		// Tbody+="</tr>"
+		// $("#compareTable").html(Tbody);
+		// $("#compareTable td").css("padding","8px")
+		// $("#compareTable td").css("line-height","1.42857143")
+		// $("#compareTable td").css("vertical-align","top")
+		// $("#compareTable td").css("border-top","1px solid #ddd")
+	}else{
+		// Tbody="";
+		// count=0;
+		// $("#compareTableTbody").html(Tbody);
+		// dataobj=[];
+	return
+	}
+	}
+
+	function clean (){
+		Tbody="";
+		count=0;
+		$("#compareTable").html("");
+		dataobj=[];
+		content = "";
+		$("#lineshow1").val("");
+		$("#lineshow2").val("");
+	}
+
+	function check(){
+		console.log(dataobj)
+		// Tbody="<tr>";
+		// Object.keys(dataobj[0]).forEach(function(key){
+		// 	if(key!=0){
+		// 	Tbody += "<td>"+dataobj[0][key]+"</td>";
+		// 	console.log("111")
+		// 	 }
+		// });
+		// Tbody+="</tr>"
+		// Tbody+="</tr>"
+		Object.keys(dataobj[1]).forEach(function(key){
+			if(key!=0){
+			if(dataobj[1][key]!=dataobj[0][key]){
+		    content+= dataobj[1][key]+"与行一不同\n";
+			// Tbody += "<td style = \"background:rgb(255,160,122)\">"+dataobj[1][key]+"</td>";
+			// }
+			// else
+			// Tbody += "<td>"+dataobj[1][key]+"</td>";
+			  }
+
+			  }
+		});
+			  if(content=="")
+			  content="无不同";
+		 $("#comparetextarea").html(content)
+		$("#compareTable").html(Tbody);
+		dataobj=[];
+		$("#compareTable td").css("padding","8px")
+		$("#compareTable td").css("line-height","1.42857143")
+		$("#compareTable td").css("vertical-align","top")
+		$("#compareTable td").css("border-top","1px solid #ddd")
+		content = "";
+		count=0;
+		$("#lineshow1").val("");
+		$("#lineshow2").val("");
+		    // padding: 8px;
+		    // line-height: 1.42857143;
+		    // vertical-align: top;
+		    // border-top: 1px solid #ddd;
+	}
+
+</script>

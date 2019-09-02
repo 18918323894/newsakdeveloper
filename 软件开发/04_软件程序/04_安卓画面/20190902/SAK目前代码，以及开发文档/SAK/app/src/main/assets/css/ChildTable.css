@@ -1,0 +1,24 @@
+
+.midForm,.rightFrom,#leftTable{
+	margin-top: 0.625rem;
+	border: solid 1px  rgb(134,162,188);
+	height:450px;
+}
+.rightFrom input,midForm input,midForm textarea{
+border: solid 1px  rgb(0,0,0);
+}
+.right_top_table{
+	border-bottom: solid 1px  rgb(134,162,188);
+}
+.right_bottom_form_input{
+	width: 33%;
+		border: solid 1px  rgb(214,213,214);
+}
+.input_margin{
+	margin-top: 0.3125rem;
+}
+.input_align{
+//	width: %;
+//	text-align: right;
+
+}

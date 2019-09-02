@@ -1,0 +1,12 @@
+.textarea{
+	width: 90%;
+	resize:none;	
+	text-align: center;
+	border: solid 1px rgb(215,215,215);
+}
+.lineshow{
+border: solid 1px rgb(215,215,215);
+}
+.op_child{
+font-size:8px;
+}

@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/vue.js"></script>
+    <script type="text/javascript" src="js/echarts.all.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div id="app">
+    <span>欢迎</span>
+    <span> {{message}}</span>
+    <select id="chart_type" v-model="couponSelected" @change="getCouponSelected()">
+        <option id="1" value="brokenline">折线图</option>
+        <option id="2" value="pie">饼图</option>
+        <option id="3" value="histogram">柱状图</option>
+        <option id="4" value="scatterplot">散点图</option>
+    </select>
+    <button @click="drawline()">点我画图</button>
+
+    <div id="echarts" style="height: 400px; width: 1000px;">
+
+    </div>
+</div>
+
+
+</body>
+</html>
+
+<script>
+	new Vue({
+		el: '#app',
+		data: {
+			message: '请选择图表类型',
+			map: new Map(),
+			couponSelected: '',
+			option: {},
+			data: [
+				[
+					[28604, 77, 17096869, 'Australia', 1990],
+					[31163, 77.4, 27662440, 'Canada', 1990],
+					[1516, 68, 1154605773, 'China', 1990],
+					[13670, 74.7, 10582082, 'Cuba', 1990],
+					[28599, 75, 4986705, 'Finland', 1990],
+					[29476, 77.1, 56943299, 'France', 1990],
+					[31476, 75.4, 78958237, 'Germany', 1990],
+					[28666, 78.1, 254830, 'Iceland', 1990],
+					[1777, 57.7, 870601776, 'India', 1990],
+					[29550, 79.1, 122249285, 'Japan', 1990],
+					[2076, 67.9, 20194354, 'North Korea', 1990],
+					[12087, 72, 42972254, 'South Korea', 1990],
+					[24021, 75.4, 3397534, 'New Zealand', 1990],
+					[43296, 76.8, 4240375, 'Norway', 1990],
+					[10088, 70.8, 38195258, 'Poland', 1990],
+					[19349, 69.6, 147568552, 'Russia', 1990],
+					[10670, 67.3, 53994605, 'Turkey', 1990],
+					[26424, 75.7, 57110117, 'United Kingdom', 1990],
+					[37062, 75.4, 252847810, 'United States', 1990]
+				],
+				[
+					[44056, 81.8, 23968973, 'Australia', 2015],
+					[43294, 81.7, 35939927, 'Canada', 2015],
+					[13334, 76.9, 1376048943, 'China', 2015],
+					[21291, 78.5, 11389562, 'Cuba', 2015],
+					[38923, 80.8, 5503457, 'Finland', 2015],
+					[37599, 81.9, 64395345, 'France', 2015],
+					[44053, 81.1, 80688545, 'Germany', 2015],
+					[42182, 82.8, 329425, 'Iceland', 2015],
+					[5903, 66.8, 1311050527, 'India', 2015],
+					[36162, 83.5, 126573481, 'Japan', 2015],
+					[1390, 71.4, 25155317, 'North Korea', 2015],
+					[34644, 80.7, 50293439, 'South Korea', 2015],
+					[34186, 80.6, 4528526, 'New Zealand', 2015],
+					[64304, 81.6, 5210967, 'Norway', 2015],
+					[24787, 77.3, 38611794, 'Poland', 2015],
+					[23038, 73.13, 143456918, 'Russia', 2015],
+					[19360, 76.5, 78665830, 'Turkey', 2015],
+					[38225, 81.4, 64715810, 'United Kingdom', 2015],
+					[53354, 79.1, 321773631, 'United States', 2015]
+				]
+			],
+		},
+		methods: {
+			drawline() {
+				//  for (var i = 0; i < 12;i++) {
+				//  	this.a[i] = Math.random()*150
+				// this.b[i] = Math.random()*200
+				//  }
+				//  this.option.series[1].data=this.a;
+				//  this.option.series[0].data = this.b;
+
+
+			},
+			getCouponSelected() {
+				console.log(this.map.get(this.couponSelected))
+				this.option = this.map.get(this.couponSelected)
+				let mychart = echarts.init(document.getElementById('echarts'));
+				mychart.setOption(this.option, true);
+				console.log(this.option == this.map.get("scatterplot"))
+			},
+		},
+		created: function() {
+			this.map.set("brokenline", {
+				tooltip: {
+					trigger: 'none',
+					axisPointer: {
+						type: 'cross'
+					}
+				},
+				legend: {
+					data: ['trace1', 'trace2']
+				},
+				grid: {
+					top: 70,
+					bottom: 50,
+				    left:30,
+				},
+				xAxis: [{
+						type: 'category',
+						axisTick: {
+							alignWithLabel: true
+						},
+						axisLine: {
+							onZero: false,
+
+						},
+						axisPointer: {
+							// label: {
+							//     formatter: function (params) {
+							//         return '降水量  ' + params.value
+							//             + (params.seriesData.length ? '：' + params.seriesData[0].data : '');
+							//     }
+							// }
+						},
+						data: ["Itemname", "Itemmodel", "batch", "alarmsnum", "supplynum", "stocknum", "Itemname", "Itemmodel",
+							"batch", "alarmsnum", "supplynum", "stocknum"
+						]
+					},
+					{
+						type: 'category',
+						axisTick: {
+							alignWithLabel: true
+						},
+						axisLine: {
+							onZero: false,
+
+						},
+						axisPointer: {
+							label: {
+								formatter: function(params) {
+									return 'trace ' + params.value +
+										(params.seriesData.length ? '：' + params.seriesData[0].data : '');
+								}
+							}
+						},
+						data: ["Itemname", "Itemmodel", "batch", "alarmsnum", "supplynum", "stocknum", "Itemname", "Itemmodel",
+							"batch", "alarmsnum", "supplynum", "stocknum"
+						]
+					}
+				],
+				yAxis: [{
+					type: 'value'
+				}],
+				series: [{
+						name: 'trace',
+						type: 'line',
+						color: '#ffeecc',
+						xAxisIndex: 1,
+						smooth: true,
+						data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
+					},
+					{
+						name: 'trace',
+						type: 'line',
+						smooth: true,
+						data: [3.9, 5.9, 11.1, 18.7, 48.3, 69.2, 231.6, 46.6, 55.4, 18.4, 10.3, 0.7]
+					}
+				]
+			})
+			this.map.set("pie", {
+				title: {
+					text: 'Trace1Trace1Trace1',
+					subtext: 'trace',
+					x: 'center'
+				},
+				tooltip: {
+					trigger: 'item',
+					formatter: "{a} <br/>{b} : {c} ({d}%)"
+				},
+				legend: {
+					orient: 'vertical',
+					left: 'left',
+					data: ["Itemname", "Itemmodel", "batch", "alarmsnum", "supplynum", "stocknum", "Itemname", "Itemmodel",
+						"batch", "alarmsnum", "supplynum", "stocknum"
+					]
+				},
+				series: [{
+					name: '访问来源',
+					type: 'pie',
+					radius: '55%',
+					center: ['50%', '60%'],
+					data: [{
+							value: 335,
+							name: 'Itemname'
+						},
+						{
+							value: 310,
+							name: 'Itemmodel'
+						},
+						{
+							value: 234,
+							name: 'batch'
+						},
+						{
+							value: 135,
+							name: 'alarmsnum'
+						},
+						{
+							value: 1548,
+							name: 'supplynum'
+						},
+						{
+							value: 1123,
+							name: 'stocknum'
+						},
+						{
+							value: 467,
+							name: 'batch'
+						},
+						{
+							value: 974,
+							name: 'alarmsnum'
+						},
+						{
+							value: 223,
+							name: 'supplynum'
+						},
+						{
+							value: 122,
+							name: 'stocknum'
+						}
+					],
+					itemStyle: {
+						emphasis: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 0, 0.5)'
+						}
+					}
+				}]
+			})
+			this.map.set("histogram", {
+				color: ['#3398DB'],
+				tooltip: {
+					trigger: 'axis',
+					axisPointer: { // 坐标轴指示器，坐标轴触发有效
+						type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+					}
+				},
+				grid: {
+					left: '3%',
+					right: '4%',
+					bottom: '3%',
+					containLabel: true
+				},
+				xAxis: [{
+					type: 'category',
+					data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+					axisTick: {
+						alignWithLabel: true
+					}
+				}],
+				yAxis: [{
+					type: 'value'
+				}],
+				series: [{
+					name: '直接访问',
+					type: 'bar',
+					barWidth: '30%',
+					data: [10, 52, 200, 334, 390, 330, 220]
+				}]
+			})
+			this.map.set("scatterplot", {
+				backgroundColor: new echarts.graphic.RadialGradient(0.3, 0.3, 0.8, [{
+					offset: 0,
+					color: '#f7f8fa'
+				}, {
+					offset: 1,
+					color: '#ffffff'
+				}]),
+				title: {
+					text: 'Trace1'
+				},
+				grid: {
+				    left:30,
+				},
+				legend: {
+					right: 10,
+					data: ['1990', '2015']
+				},
+				xAxis: {
+					splitLine: {
+						lineStyle: {
+							type: 'dashed'
+						}
+					}
+				},
+				yAxis: {
+					splitLine: {
+						lineStyle: {
+							type: 'dashed'
+						}
+					},
+					scale: true
+				},
+				series: [{
+					name: '1990',
+					data: this.data[0],
+					type: 'scatter',
+					symbolSize: function(data) {
+						return Math.sqrt(data[2]) / 5e2;
+					},
+					label: {
+						emphasis: {
+							show: true,
+							formatter: function(param) {
+								return param.data[3];
+							},
+							position: 'top'
+						}
+					},
+					itemStyle: {
+						normal: {
+							shadowBlur: 10,
+							shadowColor: 'rgba(120, 36, 50, 0.5)',
+							shadowOffsetY: 5,
+							color: new echarts.graphic.RadialGradient(0.4, 0.3, 1, [{
+								offset: 0,
+								color: 'rgb(251, 118, 103)'
+							}, {
+								offset: 1,
+								color: 'rgb(204, 46, 72)'
+							}])
+						}
+					}
+				}, {
+					name: '2015',
+					data: this.data[1],
+					type: 'scatter',
+					symbolSize: function(data) {
+						return Math.sqrt(data[2]) / 5e2;
+					},
+					label: {
+						emphasis: {
+							show: true,
+							formatter: function(param) {
+								return param.data[3];
+							},
+							position: 'top'
+						}
+					},
+					itemStyle: {
+						normal: {
+							shadowBlur: 10,
+							shadowColor: 'rgba(25, 100, 150, 0.5)',
+							shadowOffsetY: 5,
+							color: new echarts.graphic.RadialGradient(0.4, 0.3, 1, [{
+								offset: 0,
+								color: 'rgb(129, 227, 238)'
+							}, {
+								offset: 1,
+								color: 'rgb(25, 183, 207)'
+							}])
+						}
+					}
+				}]
+			})
+			console.log("created====>")
+		},
+	})
+</script>
